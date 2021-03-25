@@ -30,6 +30,7 @@ export default function Programmers() {
   // The programmers list on the one hand, and the id of the featured programmer on the other.
   const [programmer, setProgrammer] = useState(listOfAwesome);
   const [id, setId] = useState(null);
+  const [programmerName, setProgrammerName] = useState(null);
 
   const getNameOfFeatured = () => {
     // Leave this for last!
@@ -56,7 +57,8 @@ export default function Programmers() {
           programmer.map(dev =>
             <div className='programmer' key={dev.id}>
               {dev.name} <button onClick={() => { 
-                setId(dev.id); /* in here set the featured id to be dev.id */ 
+                setId(dev.id);
+                setProgrammerName(dev.name) /* in here set the featured id to be dev.id */ 
                 }}>Feature</button>
             </div>
           )
@@ -68,7 +70,7 @@ export default function Programmers() {
           // Pseudo-code: if the currently featured id is truthy render text 1, otherwise render text 2.
           // Replace the hard-coded false with the correct variable.
           id > 0
-            ? `🎉 Let's celebrate ${programmer[id - 1].name}! 🥳`
+            ? `🎉 Let's celebrate ${programmerName}! 🥳`
             : 'Pick an awesome programmer'
         }
       </div>
